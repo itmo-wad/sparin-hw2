@@ -22,7 +22,7 @@ def sign_in():
 
     session['username'] = user['username']
         
-    return redirect(url_for('index'))
+    return redirect(url_for('profile_page.index'))
 
 @auth_page.route('/sign-up', methods=["GET", "POST"])
 def sign_up():

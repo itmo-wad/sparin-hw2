@@ -4,11 +4,11 @@ This is my submission of homework 2
 
 `$DESCRIPTION`
 
-- [ ] Basic part: Implement authentication feature
+- [x] Basic part: Implement authentication feature
   - [x] Listen on localhost:5000
   - [x] Render authentication form at <http://localhost:5000/>
-  - [ ] Redirect user to profile page if successfully authenticated
-  - [ ] Show profile page for authenticated user only at <http://localhost:5000/profile>
+  - [x] Redirect user to profile page if successfully authenticated
+  - [x] Show profile page for authenticated user only at <http://localhost:5000/profile>
   - [x] User name and password are stored in Mongodb
 
 - [ ] Advanced part:

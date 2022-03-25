@@ -2,6 +2,7 @@ from flask import Flask, redirect, render_template, session, url_for
 from database import mongo
 from flask_pymongo import PyMongo
 from controllers.auth import auth_page
+from controllers.profile import profile_page
 import controllers.auth
 
 app = Flask(__name__)
@@ -11,6 +12,7 @@ app.config["MONGO_URI"] = "mongodb://localhost:27017/hw-2"
 mongo.init_app(app)
 
 app.register_blueprint(auth_page, url_prefix='/auth')
+app.register_blueprint(profile_page, url_prefix='/profile')
 
 @app.route("/")
 def index():
