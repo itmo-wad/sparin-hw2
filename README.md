@@ -2,14 +2,14 @@
 
 This is my submission of homework 2
 
-$DESCRIPTION
+`$DESCRIPTION`
 
 - [ ] Basic part: Implement authentication feature
-  - [ ] Listen on localhost:5000
-  - [ ] Render authentication form at <http://localhost:5000/>
+  - [x] Listen on localhost:5000
+  - [x] Render authentication form at <http://localhost:5000/>
   - [ ] Redirect user to profile page if successfully authenticated
   - [ ] Show profile page for authenticated user only at <http://localhost:5000/profile>
-  - [ ] User name and password are stored in Mongodb
+  - [x] User name and password are stored in Mongodb
 
 - [ ] Advanced part:
   - [ ] Implement feature that allows users to create new account, profile will be shown with data respected to each account.
@@ -22,7 +22,7 @@ $DESCRIPTION
 
 ## Prerequisites
 
-Running MongoDB on localhost:27017 with created database `practice-1` and collection `users`  
+`$PREREQUISITES`
 
 ## Run
 

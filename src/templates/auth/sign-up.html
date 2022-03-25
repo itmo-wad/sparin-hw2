@@ -1,0 +1,21 @@
+{% from "_formhelpers.html" import render_field %}
+
+<div class="form-signup">
+  <form method="POST" action="{{ url_for('auth_page.sign_up') }}">
+    <h1 class="h3 mb-3 fw-normal">Registration</h1>
+
+    <div class="form-floating mb-2">
+      {{ render_field(form.username) }}
+    </div>
+
+    <div class="form-floating mb-2">
+      {{ render_field(form.password) }}
+    </div>
+
+    <div class="form-floating mb-4">
+      {{ render_field(form.confirm) }}
+    </div>
+
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
+  </form>
+</div>
