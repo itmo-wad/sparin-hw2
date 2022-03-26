@@ -9,6 +9,8 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'the random string'
 app.config["MONGO_URI"] = "mongodb://localhost:27017/hw-2"
 
+AVATARS_PATH = './src/static/avatars/'
+
 mongo.init_app(app)
 
 app.register_blueprint(auth_page, url_prefix='/auth')

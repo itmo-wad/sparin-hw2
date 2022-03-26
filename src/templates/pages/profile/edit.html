@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<h2>General</h2>
+<hr>
 <div class="card-body">
     <form method="POST" action="{{ url_for('profile_page.edit') }}">
 
@@ -11,23 +22,89 @@
             </div>
             <div class="col-sm-9 text-secondary">
                 {% if field.errors %}
-                    {{ field(class_='form-control is-invalid') }}
-                    {% for error in field.errors %}
-                        <div class="invalid-feedback">{{ error }}</div>
-                    {% endfor %}
+                {{ field(class_='form-control is-invalid') }}
+                {% for error in field.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
                 {% else %}
-                    {{ field(class_='form-control') }}
+                {{ field(class_='form-control') }}
                 {% endif %}
             </div>
         </div>
         {% endfor %}
-        
+
         <div class="row">
             <div class="col-sm-3"></div>
             <div class="col-sm-9 text-secondary">
-                <button class="btn btn-primary px-4" type="submit">Save Changes</button>
+                <button class="btn btn-primary px-4" type="submit">Update</button>
             </div>
         </div>
     </form>
 </div>
+
+<h3>Avatar</h3>
+<hr>
+<div class="card-body">
+    <form method="POST" action="{{ url_for('profile_page.change_avatar') }}" enctype="multipart/form-data">
+
+        {% for field in change_avatar_form %}
+        <div class="row mb-3">
+            <div class="col-sm-3">
+                <h6 class="mb-0">{{field.label}}</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {% if field.errors %}
+                {{ field(class_='form-control is-invalid') }}
+                {% for error in field.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+                {% else %}
+                {{ field(class_='form-control') }}
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-9 text-secondary">
+                <button class="btn btn-primary px-4" type="submit">Upload</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<h2>Security</h2>
+<hr>
+<div class="card-body">
+    <form method="POST" action="{{ url_for('profile_page.change_password') }}">
+
+        {% for field in change_password_form %}
+        <div class="row mb-3">
+            <div class="col-sm-3">
+                <h6 class="mb-0">{{field.label}}</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {% if field.errors %}
+                {{ field(class_='form-control is-invalid') }}
+                {% for error in field.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+                {% else %}
+                {{ field(class_='form-control') }}
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-9 text-secondary">
+                <button class="btn btn-primary px-4" type="submit">Change</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
 {% endblock %}
