@@ -1,8 +1,55 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
-    <h3>Username</h3>
-    <p>{{ session['username']}}</p>
+<div class="d-flex flex-wrap">
+    <div class="card-body flex-grow-1">
+        <div class="d-flex flex-column align-items-center text-center">
+            <img src="{{ data.avatar_url }}"
+                class="rounded-circle" width="150" height="150" style="object-fit: cover">
+            <div class="mt-3">
+                <h4>{{ data.username }}</h4>
+                <p class="text-secondary mb-1">{{ data.position }}</p>
+                <p class="text-muted font-size-sm">{{ data.address }}</p>
+                <a class="btn btn-outline-primary " href="{{ url_for('profile_page.edit') }}">Edit profile</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body" style="flex: 9 0 auto;">
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Full Name</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {{ data.full_name }}
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Email</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {{ data.email }}
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Phone</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {{ data.phone }}
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Address</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {{ data.address }}
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

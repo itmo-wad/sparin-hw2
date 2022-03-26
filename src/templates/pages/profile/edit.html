@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card-body">
+    <form method="POST" action="{{ url_for('profile_page.edit') }}">
+
+        {% for field in form %}
+        <div class="row mb-3">
+            <div class="col-sm-3">
+                <h6 class="mb-0">{{field.label}}</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {% if field.errors %}
+                    {{ field(class_='form-control is-invalid') }}
+                    {% for error in field.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                    {% endfor %}
+                {% else %}
+                    {{ field(class_='form-control') }}
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+        
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-9 text-secondary">
+                <button class="btn btn-primary px-4" type="submit">Save Changes</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
