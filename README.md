@@ -2,8 +2,6 @@
 
 This is my submission of homework 2
 
-`$DESCRIPTION`
-
 - [x] Basic part: Implement authentication feature
   - [x] Listen on localhost:5000
   - [x] Render authentication form at <http://localhost:5000/>
@@ -22,7 +20,8 @@ This is my submission of homework 2
 
 ## Prerequisites
 
-`$PREREQUISITES`
+* Running MongoDB on localhost:27017
+* requirements.txt
 
 ## Run
 
