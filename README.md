@@ -17,12 +17,13 @@ This is my submission of homework 3
 
 ## Prerequisites
 
-* Running MongoDB on localhost:27017
-* requirements.txt
+* Docker
 
 ## Run
 
-`python src/app.py`
+1. `docker-compose build`
+2. `docker-compose up`
+3. http://localhost:1337
 
 ## Credits
 
