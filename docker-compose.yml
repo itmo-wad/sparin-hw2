@@ -1,0 +1,23 @@
+version: "3.2"
+services:
+  service:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - 1337:5000
+    volumes:
+      - profile_images:/app/src/static/avatars
+      - post_themes:/app/src/static/posts
+    environment:
+      - DB_CONNECTION_STRING=mongodb://database:27017/hw-3;
+
+  database:
+    image: mongo
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
+  profile_images:
+  post_themes:
