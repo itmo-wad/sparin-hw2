@@ -1,13 +1,15 @@
+import os
 from flask import Flask, redirect, render_template, session, url_for
 from database import mongo
 from flask_pymongo import PyMongo
 from controllers.auth import auth_page
 from controllers.profile import profile_page
+from controllers.posts import posts_page
 import controllers.auth
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'the random string'
-app.config["MONGO_URI"] = "mongodb://localhost:27017/hw-2"
+app.config["MONGO_URI"] = os.environ.get("DB_CONNECTION_STRING", "mongodb://localhost:27017/hw-2")
 
 AVATARS_PATH = './src/static/avatars/'
 
@@ -15,6 +17,7 @@ mongo.init_app(app)
 
 app.register_blueprint(auth_page, url_prefix='/auth')
 app.register_blueprint(profile_page, url_prefix='/profile')
+app.register_blueprint(posts_page, url_prefix='/posts')
 
 @app.route("/")
 def index():

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if 'username' in session %}
+<a href="{{url_for('posts_page.create')}}" class="btn btn-primary">Create new</a>
+{% endif %}
+<div class="d-flex flex-wrap justify-content-evenly align-self-stretch">
+    {% for post in posts %}
+    {% with data = post, isPreview = True %}
+    <div style="max-width: 25rem;" class="mb-4">
+        {% include "posts/post.html" %}
+    </div>
+    {% endwith %}
+
+    {% endfor %}
+</div>
+{% endblock %}

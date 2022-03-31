@@ -10,8 +10,9 @@
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li><a href="/" class="nav-link px-2 ">Home</a></li>
             {% if 'username' in session %}
-            <li><a href="/profile" class="nav-link px-2 ">Profile</a></li>
+            <li><a href="{{ url_for('profile_page.index') }}" class="nav-link px-2 ">Profile</a></li>
             {% endif %}
+            <li><a href="{{ url_for('posts_page.index') }}" class="nav-link px-2 ">Posts</a></li>
         </ul>
 
         <div class="col-md-3 text-end">

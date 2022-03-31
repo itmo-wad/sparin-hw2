@@ -1,22 +1,19 @@
-# Homework 2
+# Homework 3
 
-This is my submission of homework 2
+This is my submission of homework 3
 
-- [x] Basic part: Implement authentication feature
-  - [x] Listen on localhost:5000
-  - [x] Render authentication form at <http://localhost:5000/>
-  - [x] Redirect user to profile page if successfully authenticated
-  - [x] Show profile page for authenticated user only at <http://localhost:5000/profile>
-  - [x] User name and password are stored in Mongodb
-
-- [x] Advanced part:
-  - [x] Implement feature that allows users to create new account, profile will be shown with data respected to each account.
-  - [x] Implement password hashing, logout and password change features
-  - [x] Allow users to update profile picture (new user will have a default profile picture)
-  - [x] Allow users to update profile information
-
-- [ ] Challenging part:
-  - [ ] Implement notification, an active user will receive notification when a new account is created.
+- [x] Basic part
+  - [x] A public "Story" page where everyone can see all blog posts
+  - [x] Only authenticated user can add new post
+ 
+- [x] Advanced part
+  - [x] Post can have a theme image (and author name if your app is multi-user)
+  - [x] Add visibility of the post (public/private) so guest can see only public posts (authenticated user can see his/her own private/public posts)
+  - [ ] Deploy your app using docker-compose (docker-compose.yaml will be evaluated)
+ 
+- [ ] Challenging part
+  - [ ] Implement editing and deleting post feature
+  - [ ] "Story" page automatically check and update for new posts
 
 ## Prerequisites
 
