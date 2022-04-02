@@ -5,6 +5,7 @@ from flask_pymongo import PyMongo
 from controllers.auth import auth_page
 from controllers.profile import profile_page
 from controllers.posts import posts_page
+from controllers.cards import cards_page
 import controllers.auth
 
 app = Flask(__name__)
@@ -18,6 +19,7 @@ mongo.init_app(app)
 app.register_blueprint(auth_page, url_prefix='/auth')
 app.register_blueprint(profile_page, url_prefix='/profile')
 app.register_blueprint(posts_page, url_prefix='/posts')
+app.register_blueprint(cards_page, url_prefix='/cards')
 
 @app.route("/")
 def index():

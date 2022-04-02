@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Language Quiz Game</h1>
+
+<div id="game-container">
+    <div class="container">
+        <div id="card-btn-flip">
+            <div class="row my-4">
+                <div class="col d-flex justify-content-center">
+                    <div class="card " style="width: 18rem; min-height: 20rem">
+                        <div class="card-body">
+                            <h5 id="card-content" class="card-title text-center">Loading</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col d-grid">
+                <button id="card-btn-dont-remember" class="btn btn-outline-primary">I don't remember</button>
+            </div>
+            <div class="col d-grid">
+                <button id="card-btn-know-word" class="btn btn-outline-primary">I know this word</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var currentCard;
+
+        var cards = [];
+        fetch('/cards')
+            .then(async (response) => {
+                cards = await response.json();
+                setCard(cards[0]);
+            })
+            .catch(console.error);
+
+        function setCard(card) {
+            currentCard = card;
+            $("#card-content").html(`${card.en}`)
+
+        }
+
+        var dontRememberOnClickHandler = async () => {
+            await fetch(`/cards/${currentCard.id}?isKnown=false`, { method: 'POST' })
+            var index = cards.findIndex(card => card === currentCard);
+
+            if (index < cards.length - 1)
+                setCard(cards[index + 1]);
+            else
+                await finishGame();
+        }
+
+        var flipOnClickHandler = () => {
+            var content = document.getElementById('card-content').innerHTML;
+            if (content == currentCard.en)
+                document.getElementById('card-content').innerHTML = currentCard.ru;
+            else
+                document.getElementById('card-content').innerHTML = currentCard.en;
+        }
+
+        var knowThisWordOnClickHandler = async () => {
+            await fetch(`/cards/${currentCard.id}?isKnown=true`, { method: 'POST' })
+            var index = cards.findIndex(card => card === currentCard);
+
+            if (index < cards.length - 1)
+                setCard(cards[index + 1]);
+            else
+                await finishGame();
+        }
+
+        async function finishGame() {
+            var response = await fetch('/cards/stats');
+            var stats = await response.json();
+
+            var total = 0;
+            var successful = 0;
+            for (stat in stats){
+                if(stats[stat])
+                    successful++;
+                total++;
+            }
+
+            $("#game-container").html(`<h2>Good job!</h2><h3>You know ${successful}/${total}</h3><img style="width:200px;" src="/static/missing-avatar.png"></img>`);
+        }
+
+        document.getElementById('card-btn-dont-remember').addEventListener('click', dontRememberOnClickHandler);
+        document.getElementById('card-btn-flip').addEventListener('click', flipOnClickHandler);
+        document.getElementById('card-btn-know-word').addEventListener('click', knowThisWordOnClickHandler);
+    });
+
+</script>
+{% endblock %}
